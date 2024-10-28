@@ -5,14 +5,13 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyB6jD8MqUqkKmsB564-h9LkTRqUqOKOAfU",
-  authDomain: "dochouse-b6694.firebaseapp.com",
-  projectId: "dochouse-b6694",
-  storageBucket: "dochouse-b6694.appspot.com",
-  messagingSenderId: "467248171460",
-  appId: "1:467248171460:web:295de226b50ae8728cfc91"
+  apiKey: "AIzaSyCVamPs-Np1wZmknDA-cYC1YnYhJi79bAI",
+  authDomain: "doctorhouse-259ce.firebaseapp.com",
+  projectId: "doctorhouse-259ce",
+  storageBucket: "doctorhouse-259ce.appspot.com",
+  messagingSenderId: "220868468888",
+  appId: "1:220868468888:web:72756d58a48f4b4303b0ed"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export default app
