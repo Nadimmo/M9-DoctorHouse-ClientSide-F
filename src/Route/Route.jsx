@@ -17,8 +17,8 @@ import Review from "../components/Home/Review/Review";
 import AllUser from "../components/Dashboard/AllUser/AllUser";
 import AdminRoute from "../PrivateRoute/AdminRoute";
 import Contact from "../components/Home/Contact/Contact";
-import Payment from "../components/Dashboard/Payment/Payment";
 import UserRequest from "../components/Dashboard/UserRequest/UserRequest";
+import PaymentHistory from "../components/Dashboard/PaymentHistory/PaymentHistory";
 
 const Router = createBrowserRouter([
   {
@@ -63,6 +63,7 @@ const Router = createBrowserRouter([
         <Dashboard></Dashboard>
       </PrivateRoute>
     ),
+    // admin route
     children: [
       {
         path: "doctor",
@@ -81,10 +82,6 @@ const Router = createBrowserRouter([
         ),
       },
       {
-        path: 'payment',
-        element:<Payment></Payment>
-      },
-      {
         path: "users",
         element: (
           <AdminRoute>
@@ -94,8 +91,9 @@ const Router = createBrowserRouter([
       },
       {
         path:'request',
-        element: <UserRequest></UserRequest>
+        element: <AdminRoute><UserRequest></UserRequest></AdminRoute>
       },
+      // user route
       {
         path: "review",
         element: <AddReview></AddReview>,
@@ -104,6 +102,10 @@ const Router = createBrowserRouter([
         path: "appointment",
         element: <NewAppointment></NewAppointment>,
       },
+      {
+        path: 'paymentHistory',
+        element: <PaymentHistory></PaymentHistory>
+      }
     ],
   },
 ]);
