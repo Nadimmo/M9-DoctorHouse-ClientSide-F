@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import useAxiosPublic from '../Hooks/useAxiosPublic';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
 
 const AppForm = (appointment) => {
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
@@ -30,11 +30,11 @@ const AppForm = (appointment) => {
     const jsonString = JSON.stringify(formData);
 
     // Send data to the server
-    axiosPublic.post('/Newappointments', jsonString, {
+    axiosSecure.post('/Newappointments', jsonString, {
       headers: { 'Content-Type': 'application/json' }
     })
     .then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       if (res.data.insertedId) {
         reset(); // Reset the form
         Swal.fire({
