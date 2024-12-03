@@ -1,43 +1,54 @@
-import React from "react";
 import useNewAppointment from "../../Hooks/useNewAppointment";
 
 const NewAppointment = () => {
-  const { appointments } = useNewAppointment();
+  const { newAppointments } = useNewAppointment();
+
   return (
-    <div>
-        <h1 className="text-xl font-bold text-left">My Appointment : {appointments.length}</h1>
-        <br />
-      <div className="overflow-x-auto rounded-xl border-2 rounded-b-none">
-        <table className="table">
-          {/* head */}
-          <thead className="bg-base-200 font-bold text-lg">
+    <div className="p-6 bg-gray-100 min-h-screen">
+      <h1 className="text-2xl font-bold text-left text-gray-800 mb-4">
+        My Appointments: {newAppointments.length}
+      </h1>
+      <div className="overflow-x-auto rounded-lg shadow-lg border border-gray-200">
+        <table className="table-auto w-full">
+          {/* Table Header */}
+          <thead className="bg-teal-500 text-white text-lg">
             <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Treatment</th>
-              <th>Payment</th>
+              <th className="px-4 py-3 text-left">#</th>
+              <th className="px-4 py-3 text-left">Name</th>
+              <th className="px-4 py-3 text-left">Date</th>
+              <th className="px-4 py-3 text-left">Time</th>
+              <th className="px-4 py-3 text-left">Treatment</th>
+              <th className="px-4 py-3 text-left">Payment</th>
             </tr>
           </thead>
-          <tbody className="bg-white text-black">
-            {/* row 1 */}
-            {appointments.map((item, index) => (
-              <>
-                <tr className="font-bold">
-                  <th>{index + 1}</th>
-                  <td>{item.name}</td>
-                  <td>{item.date}</td>
-                  <td>{item.time}</td>
-                  <td>{item.service}</td>
-                  <th>
-                    <button className="btn btn-outline text-white bg-[#1E1E1E] hover:bg-rose-600">
+
+          {/* Table Body */}
+          <tbody className="bg-white divide-y divide-gray-200">
+            {newAppointments.length > 0 ? (
+              newAppointments.map((item, index) => (
+                <tr key={index} className="hover:bg-gray-50">
+                  <td className="px-4 py-3 text-gray-700">{index + 1}</td>
+                  <td className="px-4 py-3 text-gray-700">{item.name}</td>
+                  <td className="px-4 py-3 text-gray-700">{item.date}</td>
+                  <td className="px-4 py-3 text-gray-700">{item.time}</td>
+                  <td className="px-4 py-3 text-gray-700">{item.service}</td>
+                  <td className="px-4 py-3">
+                    <button className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300">
                       Pay
                     </button>
-                  </th>
+                  </td>
                 </tr>
-              </>
-            ))}
+              ))
+            ) : (
+              <tr>
+                <td
+                  colSpan="6"
+                  className="px-4 py-6 text-center text-gray-500 italic"
+                >
+                  No Appointments Found
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
