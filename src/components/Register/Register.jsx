@@ -66,7 +66,7 @@ const Register = () => {
             Swal.fire({
               position: "top-end",
               icon: "success",
-              title: `${res.data.displayName} Register Successfully`,
+              title: `${res.data?.displayName} Register Successfully`,
               showConfirmButton: false,
               timer: 1500,
             });
@@ -99,7 +99,7 @@ const Register = () => {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: `${res.data.displayName} Register Successfully`,
+            title: `${res.data?.displayName} Register Successfully`,
             showConfirmButton: false,
             timer: 1500,
           });
@@ -132,7 +132,7 @@ const Register = () => {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: `${res.data.displayName} Register Successfully`,
+            title: `${res.data?.displayName} Register Successfully`,
             showConfirmButton: false,
             timer: 1500,
           });
