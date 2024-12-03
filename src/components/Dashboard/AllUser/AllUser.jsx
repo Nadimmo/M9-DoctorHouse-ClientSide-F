@@ -37,7 +37,7 @@ const AllUser = () => {
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: `Delete Successfully`,
+          title: "User Removed Successfully",
           showConfirmButton: false,
           timer: 1500,
         });
@@ -48,46 +48,48 @@ const AllUser = () => {
   };
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold text-left">
-        All Users : {users.length}
+    <div className="p-6 bg-gray-100 min-h-screen">
+      <h1 className="text-2xl font-bold text-gray-800 mb-6">
+        All Users: {users.length}
       </h1>
-      <br />
-      <div className="overflow-x-auto rounded-xl border-2 rounded-b-none">
-        <table className="table">
-          <thead className="bg-base-200 font-bold text-lg">
+      <div className="overflow-x-auto rounded-lg shadow-lg border border-gray-300 bg-white">
+        <table className="table-auto w-full">
+          {/* Table Header */}
+          <thead className="bg-teal-500 text-white">
             <tr>
-              <th></th>
-              <th>Email</th>
-              <th>Action</th>
-              <th>Action</th>
+              <th className="px-4 py-3 text-left">#</th>
+              <th className="px-4 py-3 text-left">Email</th>
+              <th className="px-4 py-3 text-center">Role</th>
+              <th className="px-4 py-3 text-center">Actions</th>
             </tr>
           </thead>
-          <tbody className="bg-white text-black">
+
+          {/* Table Body */}
+          <tbody className="divide-y divide-gray-200">
             {users.map((user, index) => (
-              <tr key={index}>
-                <th>{index + 1}</th>
-                <td>{user.email}</td>
-                <td>
+              <tr key={user._id} className="hover:bg-gray-50">
+                <td className="px-4 py-3 text-gray-700">{index + 1}</td>
+                <td className="px-4 py-3 text-gray-700">{user.email}</td>
+                <td className="px-4 py-3 text-center text-gray-700">
                   {user.role === "admin" ? (
-                    "Admin"
+                    <span className="text-green-600 font-semibold">Admin</span>
                   ) : (
                     <button
                       onClick={() => handlerAdmin(user)}
-                      className="btn btn-outline text-white bg-[#07332F]"
+                      className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded transition"
                     >
                       Make Admin
                     </button>
                   )}
                 </td>
-                <th>
+                <td className="px-4 py-3 text-center">
                   <button
                     onClick={() => handlerDelete(user._id)}
-                    className="btn btn-outline text-white bg-[#07332F] hover:bg-rose-600"
+                    className="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded transition"
                   >
-                    Remove User
+                    Remove
                   </button>
-                </th>
+                </td>
               </tr>
             ))}
           </tbody>
